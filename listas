@@ -1,0 +1,104 @@
+#include <stdio.h>
+#include <string.h>
+
+struct{
+    char titulo[30];
+    char actores[50];
+    char clasificacion[30];
+    char descripcion[30];
+    char genero[30];
+    char duracion[30];
+}peliculas[10];
+
+void MinToMay(char string[]) { 
+	int i=0; 
+	int desp='a'-'A'; 
+	for (i=0;string[i]!='\0';++i) { 
+		if(string[i]>='a'&&string[i]<='z') 
+		{ string[i]=string[i]-desp; 
+		}
+		 } 
+		 }
+void agregar(int indice){	
+	printf("cual es el titulo de la pelicula: ");
+	gets(peliculas[indice].titulo);
+	printf("Quienes son los actores de la pelicula: ");
+	gets(peliculas[indice].actores);
+	printf("cual es su clasificacion de la pelicula: ");
+	gets(peliculas[indice].clasificacion);
+	printf("cual es la descripcion de la pelicula: ");
+	gets(peliculas[indice].descripcion);
+	printf("cual es la duracion de la pelicula: ");
+	gets(peliculas[indice].duracion);
+	printf("cual es el genero de la pelicula: ");
+	gets(peliculas[indice].genero);
+	};
+int comprobar(int indice){
+	if(indice!=0){
+	return 1;}
+	else
+	return	0;
+	};
+void imprimir(int indice){
+	int contador;
+	for(contador=0;contador<indice;contador++){
+		printf("\ntitulo :%s",peliculas[contador].titulo);
+		printf("\nactores :%s",peliculas[contador].actores);
+		printf("\nclasificacion :%s",peliculas[contador].clasificacion);
+		printf("\ndescripcion :%s",peliculas[contador].descripcion);
+		printf("\nduracion :%s",peliculas[contador].duracion);
+		printf("\ngenero :%s",peliculas[contador].genero);
+		}
+	}
+void busquedas(int indice,int accion){
+	int pos=0;
+	char buscar[30];
+	printf("que pelicula deseas buscar");
+	scanf("%s",buscar);
+	for(pos=0;pos<=indice;pos++){
+		if(strcmp(buscar,peliculas[pos].titulo)==1){
+			if(accion==1){
+				printf("\ntitulo :%s",peliculas[pos].titulo);
+				printf("\nactores :%s",peliculas[pos].actores);
+				printf("\nclasificacion :%s",peliculas[pos].clasificacion);
+				printf("\ndescripcion :%s",peliculas[pos].descripcion);
+				printf("\nduracion :%s",peliculas[pos].duracion);
+				printf("\ngenero :%s",peliculas[pos].genero);
+				}
+				else if(accion==2) {
+				strcpy(peliculas[pos].titulo,"");
+				strcpy(peliculas[pos].actores,"");
+				strcpy(peliculas[pos].clasificacion,"");
+				strcpy(peliculas[pos].descripcion,"");
+				strcpy(peliculas[pos].duracion,"");
+				strcpy(peliculas[pos].genero,"");
+					}
+			}
+			else printf("pelicula no encontrada");
+	}
+}
+
+		
+void main()
+{
+	int contadorlista=0,opc=0,accion=0;
+	while(opc!=5){
+	accion=0;
+	printf("menu para listas");
+	printf("\n1.-agregar\n2.-imprimir lista \n3.-buscar en lista");
+	printf("\n4.-borrar en la lista");
+	scanf("%d",&opc);
+	getchar();
+	switch(opc){
+		case 1:agregar(contadorlista);contadorlista++;break;
+		case 2:imprimir(contadorlista);break;
+		case 3:accion=1;
+		busquedas(contadorlista,accion);
+		break;
+		case 4:accion=2;
+		busquedas(contadorlista,accion);
+		break;
+		case 5:printf("saliendo del programa");break;	
+		}
+	}
+}
